@@ -7,23 +7,39 @@
 //
 
 import UIKit
+import SQLite
 
 class BookTableViewController: UITableViewController {
     var books = [Book]()
+    var model = LibraryPersistence.getInstance()
     private func loadSampleBooks() {
+        do{
+            print(try model.database.scalar(model.booksTable.count))
+            for book in try model.database.prepare(model.booksTable) {
+                let title = book[model.title]
+                let author = book[model.author]
+                let description = book[model.description]
+                let category = book[model.category]
+                let image = book[model.image]
+                books += [Book(title:title,author:author,description:description,category:category,image:UIImage(named:image))]
+            }
+        } catch{
+            print(error)
+        }
         
-        let photo1 = UIImage(named: "conan")
-        let photo2 = UIImage(named: "conan")
-        let photo3 = UIImage(named: "conan")
-        
-        let book1 = Book(name: "Caprese Salad", photo: photo1)
-        let book2 = Book(name: "Chicken and Potatoes", photo: photo2)
-        let book3 = Book(name: "Pasta with Meatballs", photo: photo3)
-        
-        books += [book1, book2, book3]
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (UserDefaults.standard.bool(forKey: "HasLaunchedOnce")) {
+            // App already launched
+        } else {
+            // This is the first launch ever
+            UserDefaults.standard.set(true, forKey: "HasLaunchedOnce")
+            UserDefaults.standard.synchronize()
+            model.createTable()
+            model.insertSampleBooks()
+        }
         loadSampleBooks()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -58,8 +74,8 @@ class BookTableViewController: UITableViewController {
 
         // Configure the cell...
         let book = books[indexPath.row]
-        cell.bookNameLabel.text=book.name
-        cell.bookImageView.image=book.photo
+        cell.bookNameLabel.text=book.title
+        cell.bookImageView.image=book.image
         return cell
     }
     
@@ -99,14 +115,27 @@ class BookTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        guard let bookDetailViewController = segue.destination as? BookDetailViewController else {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        
+        guard let selectedBookCell = sender as? BookTableViewCell else {
+            fatalError("Unexpected sender: \(sender)")
+        }
+        
+        guard let indexPath = tableView.indexPath(for: selectedBookCell) else {
+            fatalError("The selected cell is not being displayed by the table")
+        }
+        
+        let selectedBook = books[indexPath.row]
+        bookDetailViewController.book = selectedBook
     }
-    */
 
 }
