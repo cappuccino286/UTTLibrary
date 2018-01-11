@@ -21,5 +21,6 @@ class Book{
         self.category=category
         self.image=image
     }
+    
 }
 

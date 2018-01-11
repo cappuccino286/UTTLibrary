@@ -127,7 +127,7 @@ class BookTableViewController: UITableViewController {
         }
         
         guard let selectedBookCell = sender as? BookTableViewCell else {
-            fatalError("Unexpected sender: \(sender)")
+            fatalError("Unexpected sender")
         }
         
         guard let indexPath = tableView.indexPath(for: selectedBookCell) else {

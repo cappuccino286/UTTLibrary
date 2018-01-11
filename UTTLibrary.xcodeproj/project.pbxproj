@@ -22,6 +22,7 @@
 		B877A5E32005208000636726 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B877A5D42005202100636726 /* SQLite.framework */; };
 		B877A5E42005208000636726 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B877A5D42005202100636726 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B877A5E920054B0900636726 /* LibraryPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877A5E820054B0900636726 /* LibraryPersistence.swift */; };
+		B8DF7DB72007D2A500408967 /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DF7DB62007D2A500408967 /* BookCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		B8548D8E20062826007E543C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		B877A5C92005202100636726 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../Downloads/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		B877A5E820054B0900636726 /* LibraryPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPersistence.swift; sourceTree = "<group>"; };
+		B8DF7DB62007D2A500408967 /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				B81CBC541FF2AD57001702B6 /* UTTLibrary.xcdatamodeld */,
 				B81CBC7E1FF2AE02001702B6 /* BookTableViewCell.swift */,
 				B81CBC801FF365AD001702B6 /* BookTableViewController.swift */,
+				B8DF7DB62007D2A500408967 /* BookCollectionViewCell.swift */,
 			);
 			path = UTTLibrary;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B81CBC811FF365AD001702B6 /* BookTableViewController.swift in Sources */,
+				B8DF7DB72007D2A500408967 /* BookCollectionViewCell.swift in Sources */,
 				B81CBC7F1FF2AE02001702B6 /* BookTableViewCell.swift in Sources */,
 				B8548D8F20062826007E543C /* Book.swift in Sources */,
 				B81CBC501FF2AD57001702B6 /* BookDetailViewController.swift in Sources */,
