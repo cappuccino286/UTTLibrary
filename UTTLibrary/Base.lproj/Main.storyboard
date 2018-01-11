@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="133.5832083958021"/>
         </scene>
-        <!--Detective Conan-->
+        <!--BookDetailViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BookDetailViewController" customModule="UTTLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookDetailViewController" title="BookDetailViewController" id="BYZ-38-t0r" customClass="BookDetailViewController" customModule="UTTLibrary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,6 +161,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="oRz-HN-kuV"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="VgN-XW-eV3"/>
+                                    <outlet property="prefetchDataSource" destination="BYZ-38-t0r" id="7pA-vd-w0J"/>
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Similar Books" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0e-Uf-Od4">

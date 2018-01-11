@@ -7,21 +7,8 @@
 //
 
 import UIKit
-
+import SQLite
 class BookDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return similarBooks.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCollectionViewCell", for: indexPath) as! BookCollectionViewCell
-        cell.similarBookImage.image = similarBooks[indexPath.row].image
-        cell.similarBookLabel.text = similarBooks[indexPath.row].title
-        return cell
-    }
-    
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -31,9 +18,25 @@ class BookDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
     var book: Book?
     var similarBooks = [Book]()
     var model = LibraryPersistence.getInstance()
-    private func loadSmilarBooks() {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return similarBooks.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCollectionViewCell", for: indexPath) as! BookCollectionViewCell
+        cell.similarBookImage.image = similarBooks[indexPath.row].image
+        cell.similarBookLabel.text = similarBooks[indexPath.row].title
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = (UIStoryboard(name: "Main",bundle: nil).instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController)
+        let selectedBook = similarBooks[indexPath.row]
+        vc.book = selectedBook
+        self.navigationController?.show(vc, sender: vc.book)
+    }
+    
+    private func loadSmilarBooks(title: String) {
         do{
-            for book in try model.database.prepare(model.booksTable) {
+            for book in try model.database.prepare(model.booksTable.filter(model.title != title)) {
                 let title = book[model.title]
                 let author = book[model.author]
                 let description = book[model.description]
@@ -46,6 +49,7 @@ class BookDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,7 +59,7 @@ class BookDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
             descriptionLabel.text = book.description
             bookImageView.image = book.image     
         }
-        loadSmilarBooks()
+        loadSmilarBooks(title: (book?.title)!)
     }
 
     override func didReceiveMemoryWarning() {
