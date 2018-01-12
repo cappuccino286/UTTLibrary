@@ -9,18 +9,18 @@
 import UIKit
 
 class Book{
-    var title: String
-    var author: String
-    var description: String
-    var category: Int64
-    var image: UIImage?
-    init(title:String,author:String,description:String,category:Int64,image: UIImage?) {
+    let title: String
+    let description: String
+    let category: Int64
+    let image: String?
+    init(title:String,description:String,category:Int64,image: String?) {
         self.title=title
         self.author=author
         self.description=description
         self.category=category
         self.image=image
     }
+    
     
 }
 
