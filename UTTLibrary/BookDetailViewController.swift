@@ -54,6 +54,7 @@ class BookDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         super.viewDidLoad()
         
         if let book = book {
+            navigationItem.title = book.title
             bookNameLabel.text = book.title
             authorLabel.text   = book.author
             descriptionLabel.text = book.description

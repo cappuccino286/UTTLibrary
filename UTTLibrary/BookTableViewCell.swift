@@ -14,7 +14,7 @@ class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var bookNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        layoutMargins = UIEdgeInsetsMake(8, 0, 8, 0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
