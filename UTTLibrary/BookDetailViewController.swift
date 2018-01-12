@@ -15,6 +15,12 @@ class BookDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
     
+    @IBAction func borrowButtonAction(_ sender: UIButton) {
+        borrowButton.setTitle("Borrowed", for: UIControlState.normal)
+        borrowButton.backgroundColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
+        borrowButton.isEnabled = false
+    }
+    @IBOutlet weak var borrowButton: UIButton!
     var book: Book?
     var similarBooks = [Book]()
     var model = LibraryPersistence.getInstance()
