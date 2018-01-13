@@ -10,17 +10,31 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var userNameInput: UITextField!
+    @IBOutlet weak var passwordInput: UITextField!
     
+    @IBAction func login(_ sender: UIButton) {
+        let userName = userNameInput.text
+        let password = passwordInput.text
+        if loginSucceeded(userName: userName!, password: password!) {
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loginSucceeded(userName : String, password : String) -> Bool{
+        let database = LibraryPersistence.getInstance()
+        return database.checkLogin(userName: userName, password: password)
     }
     
 

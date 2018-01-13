@@ -17,11 +17,10 @@ class BookTableViewController: UITableViewController {
             print(try model.database.scalar(model.booksTable.count))
             for book in try model.database.prepare(model.booksTable) {
                 let title = book[model.title]
-                let author = book[model.author]
                 let description = book[model.description]
                 let category = book[model.category]
                 let image = book[model.image]
-                books += [Book(title:title,author:author,description:description,category:category,image:UIImage(named:image))]
+                books += [Book(title:title,description:description,category:category,image : image)]
             }
         } catch{
             print(error)
@@ -75,7 +74,7 @@ class BookTableViewController: UITableViewController {
         // Configure the cell...
         let book = books[indexPath.row]
         cell.bookNameLabel.text=book.title
-        cell.bookImageView.image=book.image
+        cell.bookImageView.image=UIImage(named: book.image!)
         return cell
     }
     

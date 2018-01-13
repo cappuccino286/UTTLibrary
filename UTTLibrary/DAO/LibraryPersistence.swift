@@ -13,11 +13,11 @@ let sharedInstance = LibraryPersistence()
 class LibraryPersistence{
     var database : Connection! = nil
     enum CATEGORY: Int {
-        case COURT = 5
-        case MOYEN = 7
-        case LONG = 9
+        case COURT  = 5
+        case MOYEN  = 7
+        case LONG   = 9
     }
-        class func getInstance() -> LibraryPersistence{
+    class func getInstance() -> LibraryPersistence{
         if(sharedInstance.database == nil){
             do {
                 let documentDirectory = try FileManager.default.url(for: .documentDirectory,in: .userDomainMask, appropriateFor:nil, create:true)
@@ -48,14 +48,14 @@ class LibraryPersistence{
     var description = Expression<String>(BookContract.BOOK_DESCRIPTION)
     var category    = Expression<Int64>(BookContract.BOOK_CATEGORY)
     var image       = Expression<String>(BookContract.BOOK_IMAGE)
-    var available   = Expression<String>(BookContract.BOOK_AVAILABLE)
+    var available   = Expression<Int64>(BookContract.BOOK_AVAILABLE)
 
     public func createTable(){
         do{
             try sharedInstance.database.run(booksTable.create(ifNotExists: true)    { t in
                 t.column(id, primaryKey: true)
                 t.column(title)
-                t.column(author)
+//                t.column(author)
                 t.column(description)
                 t.column(category)
                 t.column(image)
@@ -138,81 +138,86 @@ class LibraryPersistence{
     
     public func insertSampleBooks(){
         do{
-            try {
-                var conanBook = Book(title : "Détective Conan", description : "Shinichi Kudo est un jeune détective lycéen âgé de 17 ans fréquemment associé avec la police. Lors d'une visite dans un parc d'attractions en compagnie de son amie d'enfance, Ran Mouri, il surprend discrètement une conversation privée entre deux individus appartenant à une mystérieuse organisation criminelle dont chaque membre est habillé en noir. Repéré puis assommé, il est contraint d'avaler un nouveau poison (l'APTX 4869) mis au point par cette organisation, avant d'être laissé pour mort.", category : Int64(CATEGORY.COURT.rawValue), image :"conan")
+            var conanBook = Book(title : "Détective Conan", description : "Shinichi Kudo est un jeune détective lycéen âgé de 17 ans fréquemment associé avec la police. Lors d'une visite dans un parc d'attractions en compagnie de son amie d'enfance, Ran Mouri, il surprend discrètement une conversation privée entre deux individus appartenant à une mystérieuse organisation criminelle dont chaque membre est habillé en noir. Repéré puis assommé, il est contraint d'avaler un nouveau poison (l'APTX 4869) mis au point par cette organisation, avant d'être laissé pour mort.", category : Int64(CATEGORY.COURT.rawValue), image :"conan")
                 var conanAuthor = Author(nom : "Gosho", prenom : "Aoyama")
-                var idBook = insertBook(conanBook)
-                var idAuthor = insertAuthor(conanAuthor)
-                insertBookAuthor(idBook, idAuthor : idAuthor)
-            }
-
-            try {
+                self.insertBookAuthor(book : conanBook, author : conanAuthor)
+          
                 var cleanCodeBook = Book(title : "Clean Code", description : "Si un code sale peut fonctionner, il peut également remettre en question la pérennité d'une entreprise de développement de logiciels. Chaque année, du temps et des ressources sont gaspillés à cause d’un code mal écrit. Cet ouvrage vous apprendra les meilleures pratiques de nettoyage du code « à la volée » et les valeurs d’un artisan du logiciel qui feront de vous un meilleur programmeur.", category : Int64(CATEGORY.LONG.rawValue), image : "clean_code")
-                var idBook = insertBook(cleanCodeBook)
                 var cleanCodeAuthor = Author(nom : "C.Martin", prenom : "Robert")
-                var idAuthor = insertAuthor(cleanCodeAuthor )
-                insertBookAuthor(idBook,idAuthor : idAuthor)
-            }
+                self.insertBookAuthor(book: cleanCodeBook,author : cleanCodeAuthor)
 
-            try {
+            
                 var narutoBook = Book(title : "Naruto", description : "Naruto est un garçon un peu spécial. Solitaire au caractère fougueux, il n'est pas des plus appréciés dans son village. Malgré cela, il garde au fond de lui une ambition : celle de devenir un maître Hokage, la plus haute distinction dans l'ordre des ninjas, et ainsi obtenir la reconnaissance de ses pairs mais cela ne sera pas de tout repos... Suivez l'éternel farceur dans sa quête du secret de sa naissance et de la conquête des fruits de son ambition !",category : Int64(CATEGORY.LONG.rawValue), image : "naruto")
-                var idBook = insertBook (narutoBook)
                 var narutoAuthor = Author(nom : "Masashi", prenom : "Kishimoto")
-                var idAuthor = insertAuthor(narutoAuthor)
-                insertBookAuthor(idBook, idAuthor : idAuthor)
-            }
+            self.insertBookAuthor(book: narutoBook,author : narutoAuthor)
+     
 
-            try {
-                var dragonBallBook = Book(title : "Dragon Ball", description : "Dragon Ball (ドラゴンボール, Doragon Bōru?, litt. Dragon Ball) est une série de mangas créée par Akira Toriyama, celui-ci s'inspirant librement du roman de Wu Cheng'en La Pérégrination vers l'Ouest. Elle est publiée pour la première fois dans le magazine Weekly Shōnen Jump de 1984 à 1995 et éditée en album de 1985 à 1995 par Shūeisha. Glénat publie l'édition française depuis février 1993.",category : Int64(CATEGORY.COURT.rawValue), image : "dragonball")
-                var idBook = insertBook(dragonBallBook)
+            var dragonBallBook = try Book(title : "Dragon Ball", description : "Dragon Ball (ドラゴンボール, Doragon Bōru?, litt. Dragon Ball) est une série de mangas créée par Akira Toriyama, celui-ci s'inspirant librement du roman de Wu Cheng'en La Pérégrination vers l'Ouest. Elle est publiée pour la première fois dans le magazine Weekly Shōnen Jump de 1984 à 1995 et éditée en album de 1985 à 1995 par Shūeisha. Glénat publie l'édition française depuis février 1993.",category : Int64(CATEGORY.COURT.rawValue), image : "dragonball")
                 var dragonBallAuthor = Author(nom : "Akira", prenom : "Toriyama")
-                var idAuthor = insertAuthor(dragonBallAuthor)
-                insertBookAuthor(idBook, idAuthor : idAuthor)
-            }
+                self.insertBookAuthor(book: dragonBallBook,author : dragonBallAuthor)
 
-            try {
-                var doraemonBook = Book(title : "Doraemon", description : "Doraemon (ドラえもん) est une série de mangas japonais, créée par Fujiko Fujio, par la suite devenue un anime puis une franchise médiatique. La série se centre sur un chat-robot nommé Doraemon, ayant voyagé à travers le temps depuis le futur, afin d'aider un jeune garçon nommé Nobita Nobi (野比 のび太, Nobi Nobita) .",category : Int64(CATEGORY.LONG.rawValue), image : "doremon")
-                var idBook = insertBook(doraemonBook)
+            var doraemonBook = try Book(title : "Doraemon", description : "Doraemon (ドラえもん) est une série de mangas japonais, créée par Fujiko Fujio, par la suite devenue un anime puis une franchise médiatique. La série se centre sur un chat-robot nommé Doraemon, ayant voyagé à travers le temps depuis le futur, afin d'aider un jeune garçon nommé Nobita Nobi (野比 のび太, Nobi Nobita) .",category : Int64(CATEGORY.LONG.rawValue), image : "doremon")
                 var doraemonAuthor = Author(nom : "Fujiko", prenom : "Fujio")
-                var idAuthor = insertAuthor(doraemonAuthor)
-                insertBookAuthor(idBook, idAuthor : idAuthor)
-            }
-
-            try {
-                var petitPrinceBook = Book(title : "Le Petit Prince", description <- "Le Petit Prince est une œuvre de langue française, la plus connue d'Antoine de Saint-Exupéry. Publié en 1943 à New York simultanément à sa traduction anglaise1, c'est un conte poétique et philosophique sous l'apparence d'un conte pour enfants.         Traduit à ce jour en 300 langues, Le Petit Prince est le deuxième ouvrage le plus traduit au monde après la Bible2.",category : Int64(CATEGORY.LONG.rawValue), image : "petit_prince")
-                var idBook = insertBook(petitPrinceBook)
+                self.insertBookAuthor(book: doraemonBook,author : doraemonAuthor)
+    
+                var petitPrinceBook = Book(title : "Le Petit Prince", description: "Le Petit Prince est une œuvre de langue française, la plus connue d'Antoine de Saint-Exupéry. Publié en 1943 à New York simultanément à sa traduction anglaise1, c'est un conte poétique et philosophique sous l'apparence d'un conte pour enfants.         Traduit à ce jour en 300 langues, Le Petit Prince est le deuxième ouvrage le plus traduit au monde après la Bible2.",category : Int64(CATEGORY.LONG.rawValue), image : "petit_prince")
                 var petitPrinceAuthor = Author(nom : "Antoine", prenom : "Saint-Exupéry")
-                var idAuthor = insertAuthor(petitPrinceAuthor)
-                insertBookAuthor(idBook, idAuthor : idAuthor)
-                
-            }
-
-            try {
+                self.insertBookAuthor(book: petitPrinceBook,author : petitPrinceAuthor)
+            
                 var onepieceBook = Book(title : "One Piece", description : "One Piece (ワンピース, Wan Pīsu?) est une série de mangas shōnen créée par Eiichirō Oda. Elle est prépubliée depuis le 22 juillet 1997 dans le magazine hebdomadaire Weekly Shōnen Jump, puis regroupée en volumes reliés aux éditions Shūeisha depuis le 24 décembre 1997. En novembre 2017, 87 tomes et plus de 880 chapitres sont commercialisées au Japon. La version française est publiée directement en volume reliés depuis le 1 septembre 2000 par Glénat. 85 volumes sont commercialisées en janvier 2018 en France. Depuis le 3 juillet 2013, une réédition plus proche de la version originale a été lancée.",category : Int64(CATEGORY.LONG.rawValue), image : "onepiece")
-                var idBook = insertBook(onepieceBook)
                 var onePieceAuthor = Author(nom : "Eiichirō", prenom : "Oda")
-                var idAuthor = insertAuthor(onePieceAuthor)
-                insertBookAuthor(idBook, idAuthor : idAuthor)
-                
-            }
+                self.insertBookAuthor(book: onepieceBook,author : onePieceAuthor)
+           
         } catch {
             print(error)
         }
     }
     // return the inserted id
     func insertBook(book : Book) -> Int64{
-        let idInserted = sharedInstance.database.run(booksTable.insert(title <- book.title, description <- book.description, category <- Int64(book.category.rawValue), image <- book.image, available <- book.getAvailable()))
+        do {
+            let idInserted = try sharedInstance.database.run(booksTable.insert(title <- book.title, description <- book.description, category <- book.category, image <- book.image!, available <- book.getAvailable()))
+            return idInserted
+        } catch  {
+            print(error)
+            return -1
+        }
+    }
+    
+    func insertAuthor(author : Author) -> Int64{
+        do {
+            return try sharedInstance.database.run(authorTable.insert(self.authorNom <- author.nom, self.authorPrenom <- author.prenom))
+        } catch  {
+            print(error)
+            return -1
+        }
         
     }
-    //
-    func insertAuthor(author : Author) -> Int64{
-        return sharedInstance.database.run(authorTable.insert(nom : author.nom, prenom : author.prenom))
+    
+    func insertBookAuthor(book : Book, author : Author){
+        let idBook =  insertBook(book: book)
+        let idAuthor =  insertAuthor(author: author)
+            insertBookAuthor(idBook : idBook, idAuthor : idAuthor)
     }
     
     func insertBookAuthor(idBook :Int64, idAuthor: Int64){
-        sharedInstance.database.run(bookAuthorTable.insert(ba_idBook : idBook, ba_idAuthor : idAuthor))
+        do{
+            try sharedInstance.database.run(self.bookAuthorTable.insert(ba_idBook <- idBook, self.ba_idAuthor <- idAuthor))
+        }catch {
+            print(error)
+        }
     }
 
+    func checkLogin(userName : String, password : String) -> Bool {
+        do{
+            let count = try sharedInstance.database.scalar(userTable.filter(sharedInstance.userName == userName && sharedInstance.password == password).count)
+            if(count>0){
+                return true
+            }    
+        }catch {
+            print(error)
+        }
+        return false
+    }
     
 }
 

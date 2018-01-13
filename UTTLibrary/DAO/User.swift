@@ -11,7 +11,7 @@ class User {
     let userName : String
     let password : String
     let noEtu    : String
-    init(userName: userName, password : password, noEtu : noEtu){
+    init(userName: String, password : String, noEtu : String){
         self.userName = userName
         self.password = password
         self.noEtu    = noEtu

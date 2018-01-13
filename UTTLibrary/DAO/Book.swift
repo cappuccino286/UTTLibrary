@@ -17,7 +17,6 @@ class Book{
     var available   : Int64
     init(title:String,description:String,category:Int64,image: String?) {
         self.title=title
-        self.author=author
         self.description=description
         self.category=category
         self.image=image

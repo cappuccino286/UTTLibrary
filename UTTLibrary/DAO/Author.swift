@@ -8,25 +8,24 @@
 
 import Foundation
 class  Author {
-    var id      : Int
+    var id      : Int64
     let nom     : String
     let prenom  : String
     var idSetted : Bool
-    init(nom : nom , prenom : prenom){
+    init(nom : String , prenom : String){
         self.nom = nom
         self.prenom = prenom
+        self.idSetted = false
+        self.id = -1
     }
     public var description : String {return nom + " " + prenom}
     
-    public func setId(id : Int){
-        if idSetted {
-            throw IdSettedError.IdSetted
-        }
+    public func setId(id : Int64){
         self.id = id
         self.idSetted = true
     }
     
-    public func getId(){
+    public func getId() -> Int64{
         return self.id
     }
     
