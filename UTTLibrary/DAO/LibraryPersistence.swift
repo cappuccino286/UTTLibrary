@@ -39,6 +39,7 @@ class LibraryPersistence{
         static let BOOK_DESCRIPTION = "description"
         static let BOOK_CATEGORY = "category"
         static let BOOK_IMAGE   = "image"
+        static let BOOK_AVAILABLE = "available"
     }
 
     var booksTable  = Table(BookContract.TABLE_NAME)
@@ -47,6 +48,7 @@ class LibraryPersistence{
     var description = Expression<String>(BookContract.BOOK_DESCRIPTION)
     var category    = Expression<Int64>(BookContract.BOOK_CATEGORY)
     var image       = Expression<String>(BookContract.BOOK_IMAGE)
+    var available   = Expression<String>(BookContract.BOOK_AVAILABLE)
 
     public func createTable(){
         do{
@@ -57,6 +59,7 @@ class LibraryPersistence{
                 t.column(description)
                 t.column(category)
                 t.column(image)
+                t.column(available)
             })
         } catch{
             print(error)
@@ -198,7 +201,7 @@ class LibraryPersistence{
     }
     // return the inserted id
     func insertBook(book : Book) -> Int64{
-        let idInserted = sharedInstance.database.run(booksTable.insert(title <- book.title, description <- book.description, category <- Int64(book.category.rawValue), image <- book.image))
+        let idInserted = sharedInstance.database.run(booksTable.insert(title <- book.title, description <- book.description, category <- Int64(book.category.rawValue), image <- book.image, available <- book.getAvailable()))
         
     }
     //
