@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0804222820090AE600342EE8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804222720090AE600342EE8 /* LoginViewController.swift */; };
 		08C6883E200814650072C6C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6883D200814650072C6C6 /* User.swift */; };
 		08C6884120081E570072C6C6 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6884020081E570072C6C6 /* Author.swift */; };
 		B81CBC4E1FF2AD57001702B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81CBC4D1FF2AD57001702B6 /* AppDelegate.swift */; };
@@ -115,6 +116,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0804222720090AE600342EE8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		08C6883D200814650072C6C6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		08C6884020081E570072C6C6 /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		B81CBC4A1FF2AD57001702B6 /* UTTLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UTTLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +168,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0804222920090AFD00342EE8 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0804222720090AE600342EE8 /* LoginViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		08C68843200840EA0072C6C6 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +208,7 @@
 		B81CBC4C1FF2AD57001702B6 /* UTTLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				0804222920090AFD00342EE8 /* Login */,
 				08C68843200840EA0072C6C6 /* MainScreen */,
 				B877A5EA2005550100636726 /* DAO */,
 				B81CBC4D1FF2AD57001702B6 /* AppDelegate.swift */,
@@ -468,6 +479,7 @@
 				B877A5E920054B0900636726 /* LibraryPersistence.swift in Sources */,
 				B81CBC561FF2AD57001702B6 /* UTTLibrary.xcdatamodeld in Sources */,
 				B81CBC4E1FF2AD57001702B6 /* AppDelegate.swift in Sources */,
+				0804222820090AE600342EE8 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,7 +656,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utt.UTTLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -659,7 +671,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utt.UTTLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
