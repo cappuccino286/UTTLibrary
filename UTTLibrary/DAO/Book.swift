@@ -15,39 +15,40 @@ class Book{
     let category    : Int64
     let image       : String?
     var user        : String
-    // 1 if available and 0 if not
-    var available   : Int64
-    init(title:String,author:String,description:String,category:Int64,image: String?,available:Int64) {
+//    // 1 if available and 0 if not
+//    var available   : Int64
+    init(title:String,author:String,description:String,category:Int64,image: String?) {
         self.title=title
         self.author=author
         self.description=description
         self.category=category
         self.image=image
-        self.available = available
+//        self.available = available
         self.user = ""
     }
     
-    init(title:String,author:String,description:String,category:Int64,image: String?,available:Int64, user : User) {
+    init(title:String,author:String,description:String,category:Int64,image: String?, user : String) {
         self.title      = title
         self.author     = author
         self.description = description
         self.category   = category
         self.image      = image
-        self.available  = available
-        self.user       = user.userName
+//        self.available  = available
+        self.user       = user
+        
     }
     
-    public func setAvailable(available : Bool) {
-        if(available){
-            self.available = 1
-        }else{
-            self.available = 0
-        }
-    }
+//    public func setAvailable(available : Bool) {
+//        if(available){
+//            self.available = 1
+//        }else{
+//            self.available = 0
+//        }
+//    }
     
-    public func getAvailable() -> Int64{
-        return self.available
-    }
+//    public func getAvailable() -> Int64{
+//        return self.available
+//    }
     
     public func isBorrowedByUser(user : User){
         self.user = user.userName

@@ -79,8 +79,8 @@ class BookConsultingViewController: UIViewController, UICollectionViewDelegate, 
                 let category = book[model.category]
                 let image = book[model.image]
                 let author = book[model.author]
-                let available = book[model.available]
-                allBookList += [Book(title:title, author : author, description:description, category:category,image:image, available: available)]
+                let user = book[model.user]
+                allBookList += [Book(title:title, author : author, description:description, category:category,image:image, user: user)]
             }
         } catch{
             print(error)

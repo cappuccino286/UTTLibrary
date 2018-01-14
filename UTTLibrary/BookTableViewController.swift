@@ -15,14 +15,15 @@ class BookTableViewController: UITableViewController {
     private func loadSampleBooks() {
         do{
             print(try model.database.scalar(model.booksTable.count))
-            for book in try model.database.prepare(model.booksTable) {
+            let query = model.booksTable.filter(model.user ==  UserSessionManagement.getUserSession().userName)
+            for book in try model.database.prepare(query) {
                 let title = book[model.title]
                 let author = book[model.author]
                 let description = book[model.description]
                 let category = book[model.category]
                 let image = book[model.image]
-                let available = book[model.available]
-                books += [Book(title:title,author:author,description:description,category:category,image : image,available:available)]
+                let user = book[model.user]
+                books += [Book(title:title,author:author,description:description,category:category,image : image,user:user)]
             }
         } catch{
             print(error)

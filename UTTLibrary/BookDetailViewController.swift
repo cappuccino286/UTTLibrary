@@ -19,19 +19,12 @@ class BookDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var borrowButton: UIButton!
-    
+    var thisUser:String = UserSessionManagement.getUserSession().userName
     @IBAction func borrowButtonAction(_ sender: UIButton) {
-        setStateButton(state: 0)
+        setStateButton(state: thisUser)
         do{
             let targetBook = model.booksTable.filter(model.title == bookTitle)
-            for book in try model.database.prepare(targetBook) {
-                print(book[model.available])
-            }
-            
-            try model.database.run(targetBook.update(model.available <- 0))
-            for book in try model.database.prepare(targetBook) {
-                print(book[model.available])
-            }
+            try model.database.run(targetBook.update(model.user <- thisUser))
         } catch{
             print(error)
         }
@@ -61,8 +54,8 @@ class BookDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
                 let description = book[model.description]
                 let category = book[model.category]
                 let image = book[model.image]
-                let available = book[model.available]
-                similarBooks += [Book(title:title,author:author,description:description,category:category,image:image,available:available)]
+                let user = book[model.user]
+                similarBooks += [Book(title:title,author:author,description:description,category:category,image:image,user:user)]
             }
         } catch{
             print(error)
@@ -79,19 +72,20 @@ class BookDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
             descriptionLabel.text = book.description
             bookImageView.image = UIImage(named: book.image!)
         }
-        setStateButton(state: (book?.available)!)
+        setStateButton(state: (book?.user)!)
         bookTitle = (book?.title)!
         loadSmilarBooks(title: (book?.title)!)
-    }
-    private func setStateButton(state : Int64){
-        if state == 0 {
-            borrowButton.setTitle("Borrowed", for: UIControlState.normal)
-            borrowButton.backgroundColor = UIColor(red: 74/255, green: 49/255, blue: 42/255, alpha: 1.0)
-            borrowButton.isEnabled = false
-        } else{
+    }	
+    private func setStateButton(state : String){
+        if state.isEmpty{
             borrowButton.setTitle("Borrow", for: UIControlState.normal)
             borrowButton.backgroundColor = UIColor(red: 253/255, green: 142/255, blue: 9/255, alpha: 1.0)
             borrowButton.isEnabled = true
+            
+        } else{
+            borrowButton.setTitle("Borrowed", for: UIControlState.normal)
+            borrowButton.backgroundColor = UIColor(red: 74/255, green: 49/255, blue: 42/255, alpha: 1.0)
+            borrowButton.isEnabled = false
         }
     }
     override func didReceiveMemoryWarning() {
