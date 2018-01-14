@@ -70,7 +70,7 @@ class LibraryPersistence{
     
     public func createTableBook(){
         do{
-            try sharedInstance.database.run(booksTable.create(ifNotExists: true)    { t in
+            try self.database.run(booksTable.create(ifNotExists: true)    { t in
                 t.column(id, primaryKey: true)
                 t.column(title)
                 t.column(author)
@@ -201,7 +201,7 @@ class LibraryPersistence{
     func insertBook(book : Book) -> Int64{
         do {
             var insert = booksTable.insert(title <- book.title, author <- book.author, description <- book.description, category <- book.category, image <- book.image!, available <- book.getAvailable(), user <- book.user)
-            let idInserted = try sharedInstance.database.run(insert)
+            let idInserted = try self.database.run(insert)
             return idInserted
         } catch  {
             print(error)
@@ -211,7 +211,7 @@ class LibraryPersistence{
     
     func insertUser(user : User){
         do {
-            try sharedInstance.database.run(userTable.insert(sharedInstance.userName <- user.userName, sharedInstance.password <- user.password, sharedInstance.noEtu <- user.noEtu))
+            try self.database.run(userTable.insert(self.userName <- user.userName, self.password <- user.password, self.noEtu <- user.noEtu))
         } catch {
             print(error)
         }
@@ -245,7 +245,7 @@ class LibraryPersistence{
         do{
             var user : User?
             user = nil
-            for resultat in try sharedInstance.database.prepare(userTable.filter(self.userName == userName && self.password == password)){
+            for resultat in try database.prepare(self.userTable.filter(self.userName == userName && self.password == password)){
                 user = User(userName : resultat[self.userName], password : resultat[self.password], noEtu : resultat[self.noEtu])
             }
             return user
@@ -254,6 +254,15 @@ class LibraryPersistence{
             print(error)
         }
         return nil
+    }
+    
+    public func deleteBook(book : Book) {
+        let bookToDelete = booksTable.filter(self.title == book.title && self.author == book.author)
+        do {
+            try self.database.run(bookToDelete.delete())
+        } catch {
+            print(error)
+        }
     }
     
 }

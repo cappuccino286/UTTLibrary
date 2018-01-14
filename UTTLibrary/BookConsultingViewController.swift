@@ -20,15 +20,46 @@ class BookConsultingViewController: UIViewController, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookConsultingCell", for: indexPath) as! BookItemCollectionViewCell
+        let position = indexPath.row
         cell.bookImageView.image = UIImage(named : allBookList[indexPath.row].image!)
-        cell.bookTitleField.text = allBookList[indexPath.row].title
-        cell.authorField.text    = allBookList[indexPath.row].author
+        cell.bookTitleField.text = allBookList[position].title
+        cell.authorField.text    = allBookList[position].author
+        cell.deleteButton.tag = position
+        cell.deleteButton.addTarget(self, action : #selector(self.deleteItem), for: UIControlEvents.touchUpInside)
         return cell
+    }
+    
+    @IBAction func deleteItem(sender : UIButton) -> Void{
+        let idBook = sender.tag
+        let book = allBookList[idBook]
+        self.deleteBook(book: book)
+        self.reloadBook()
+        self.listBookCollectionView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  
+        if (!segue.destination.isKind(of: BookDetailViewController.self) ){
+            return
+        }
+        let bookDetailViewController = segue.destination as? BookDetailViewController
+        guard let selectedBookCell = sender as? BookItemCollectionViewCell else {
+            fatalError("Unexpected sender")
+        }
+            
+        guard let indexPath = listBookCollectionView.indexPath(for: selectedBookCell) else {
+            fatalError("The selected cell is not being displayed by the table")
+        }
+            
+        let selectedBook = allBookList[indexPath.row]
+        bookDetailViewController?.book = selectedBook
+
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadBook()
+        reloadBook()
         // Do any additional setup after loading the view.
     }
 
@@ -37,7 +68,7 @@ class BookConsultingViewController: UIViewController, UICollectionViewDelegate, 
         // Dispose of any resources that can be recreated.
     }
 
-    func loadBook() {
+    func reloadBook() {
         //clear list before reloading
         allBookList.removeAll()
         do{
@@ -54,6 +85,11 @@ class BookConsultingViewController: UIViewController, UICollectionViewDelegate, 
         } catch{
             print(error)
         }
+    }
+    
+    func deleteBook(book : Book){
+        let model = LibraryPersistence.getInstance()
+        model.deleteBook(book : book)
     }
 
     /*

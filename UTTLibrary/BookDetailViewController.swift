@@ -41,7 +41,7 @@ class BookDetailViewController: UIViewController,UICollectionViewDelegate,UIColl
         return similarBooks.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! BookCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCollectionViewCell", for: indexPath) as! BookCollectionViewCell
         cell.similarBookImage.image = UIImage(named : similarBooks[indexPath.row].image!)
         cell.similarBookLabel.text = similarBooks[indexPath.row].title
         return cell

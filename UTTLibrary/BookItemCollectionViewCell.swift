@@ -13,4 +13,5 @@ class BookItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bookTitleField: UILabel!
     @IBOutlet weak var authorField: UILabel!
     
+    @IBOutlet weak var deleteButton: UIButton!
 }

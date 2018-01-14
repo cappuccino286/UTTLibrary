@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hze-ui-ILy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QyY-ip-Lu9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -92,7 +90,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AXs-n4-r1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-577" y="143"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="JWV-s7-KRA">
@@ -128,8 +126,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="login:" destination="sEs-BW-qKr" eventType="touchUpInside" id="wDL-IM-2Q5"/>
-                                    <segue destination="Hze-ui-ILy" kind="show" identifier="loginSegue" id="HbU-N0-rWk"/>
+                                    <segue destination="Hze-ui-ILy" kind="show" identifier="loginSegue" id="TpL-uI-bKs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -149,6 +146,7 @@
                             <constraint firstItem="UaU-7H-JnJ" firstAttribute="centerX" secondItem="iWT-AR-UdL" secondAttribute="centerX" id="xBI-h3-6qa"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="AjX-ew-ddq"/>
                     <connections>
                         <outlet property="passwordInput" destination="UaU-7H-JnJ" id="RB0-ra-dDL"/>
                         <outlet property="userNameInput" destination="Nfa-Oa-Y0S" id="aa4-ol-Utm"/>
@@ -156,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JKB-mB-UHm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-599.20000000000005" y="798.35082458770626"/>
+            <point key="canvasLocation" x="-130" y="806"/>
         </scene>
         <!--Book Consulting View Controller-->
         <scene sceneID="KuB-Q1-Px5">
@@ -170,16 +168,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7VA-Or-X3S">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <color key="backgroundColor" red="0.095969833433628082" green="0.13136333227157593" blue="0.71858865022659302" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <items>
-                                    <navigationItem title="Book" id="V9t-LQ-rOD"/>
-                                </items>
-                            </navigationBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L8u-nV-asw">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L8u-nV-asw">
+                                <rect key="frame" x="9.5" y="16.5" width="356" height="634"/>
+                                <color key="backgroundColor" red="0.97680455446243286" green="0.95198712527246621" blue="0.82066545058235496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zdk-qX-v9p">
                                     <size key="itemSize" width="166" height="211"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -194,13 +185,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="166" height="211"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0qO-py-SPj">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0qO-py-SPj">
                                                     <rect key="frame" x="0.0" y="0.0" width="166" height="211"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQA-Zl-6ha">
-                                                    <rect key="frame" x="0.0" y="161" width="166" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQA-Zl-6ha">
+                                                    <rect key="frame" x="0.0" y="158.5" width="166" height="52.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DragonBall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6I-Mk-8u2">
                                                             <rect key="frame" x="18" y="5" width="77" height="21"/>
@@ -216,15 +205,32 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6y-uZ-7Oq">
+                                                            <rect key="frame" x="133" y="11" width="25" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="0.99117952585220337" green="0.14598259329795837" blue="0.035147249698638916" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" backgroundImage="delete-button">
+                                                                <color key="titleColor" red="0.99117952585220337" green="0.14598259329795837" blue="0.035147249698638916" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </state>
+                                                        </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.13434195518493652" green="0.082431472837924957" blue="0.034892670810222626" alpha="0.23889661815068494" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.13434195518493652" green="0.082431472837924957" blue="0.034892670810222626" alpha="0.48531142979452052" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="0qO-py-SPj" firstAttribute="width" secondItem="6bA-rL-vqe" secondAttribute="width" id="03v-lm-nGW"/>
+                                            <constraint firstItem="0qO-py-SPj" firstAttribute="height" secondItem="6bA-rL-vqe" secondAttribute="height" id="Sj8-I1-XJr"/>
+                                            <constraint firstAttribute="bottom" secondItem="sQA-Zl-6ha" secondAttribute="bottom" id="Wkc-BD-PKJ"/>
+                                            <constraint firstItem="sQA-Zl-6ha" firstAttribute="height" secondItem="6bA-rL-vqe" secondAttribute="height" multiplier="0.25" id="Z9y-NR-GIN"/>
+                                            <constraint firstItem="sQA-Zl-6ha" firstAttribute="width" secondItem="6bA-rL-vqe" secondAttribute="width" id="yfa-F1-LfE"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="AuthorField" destination="7zf-Qu-Iax" id="IQv-ZI-j8Y"/>
                                             <outlet property="BookImageView" destination="0qO-py-SPj" id="wIb-IH-0jw"/>
                                             <outlet property="BookTitleField" destination="y6I-Mk-8u2" id="Tnl-2O-pRD"/>
+                                            <outlet property="deleteButton" destination="f6y-uZ-7Oq" id="Qag-Y8-wu9"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="Bpk-Rf-o4z"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -234,19 +240,28 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.97680455450000003" green="0.95198712529999996" blue="0.82066545059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="L8u-nV-asw" firstAttribute="firstBaseline" secondItem="7VA-Or-X3S" secondAttribute="baseline" symbolType="layoutAnchor" id="j2g-a7-c3Y"/>
-                            <constraint firstItem="L8u-nV-asw" firstAttribute="width" secondItem="Boq-1V-Bnb" secondAttribute="width" id="jGI-Y2-UxM"/>
+                            <constraint firstItem="L8u-nV-asw" firstAttribute="height" secondItem="Boq-1V-Bnb" secondAttribute="height" multiplier="0.95" id="Cz4-lx-OGx"/>
+                            <constraint firstItem="L8u-nV-asw" firstAttribute="width" secondItem="Boq-1V-Bnb" secondAttribute="width" multiplier="0.95" id="jGI-Y2-UxM"/>
+                            <constraint firstItem="L8u-nV-asw" firstAttribute="centerX" secondItem="Boq-1V-Bnb" secondAttribute="centerX" id="pUT-W9-Dei"/>
+                            <constraint firstItem="L8u-nV-asw" firstAttribute="centerY" secondItem="Boq-1V-Bnb" secondAttribute="centerY" id="z3x-gH-Aeh"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="mn3-JN-f8G">
+                        <barButtonItem key="rightBarButtonItem" title="Consult book" id="Bnf-oj-gva">
+                            <connections>
+                                <segue destination="06Y-rZ-DHf" kind="show" identifier="consultBookSegue" id="PdO-Bd-KV2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="listBookCollectionView" destination="L8u-nV-asw" id="uRQ-ZE-f2s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9Q-m5-bTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296.80000000000001" y="803.74812593703155"/>
+            <point key="canvasLocation" x="601" y="806"/>
         </scene>
         <!--BookDetailViewController-->
         <scene sceneID="tne-QT-ifu">
@@ -352,7 +367,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ROx-nS-bnM">
-                                <rect key="frame" x="8" y="28" width="180" height="250"/>
+                                <rect key="frame" x="8" y="72" width="180" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="J5L-zQ-oXg"/>
                                     <constraint firstAttribute="width" constant="180" id="LoQ-9y-9uG"/>
@@ -383,7 +398,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="869.60000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="422" y="143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HSI-hI-vAH">
@@ -396,19 +411,21 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="06Y-rZ-DHf" kind="relationship" relationship="rootViewController" id="byM-n3-6rs"/>
+                        <segue destination="sEs-BW-qKr" kind="relationship" relationship="rootViewController" id="ckd-GN-HZe"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrn-64-lTY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-668" y="134"/>
+            <point key="canvasLocation" x="-943" y="806"/>
         </scene>
     </scenes>
     <resources>
         <image name="back_login" width="480" height="800"/>
+        <image name="delete-button" width="16" height="16"/>
         <image name="ic_play_arrow" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fye-fk-bBq"/>
+        <segue reference="Bpk-Rf-o4z"/>
+        <segue reference="PdO-Bd-KV2"/>
     </inferredMetricsTieBreakers>
 </document>

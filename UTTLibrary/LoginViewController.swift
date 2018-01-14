@@ -14,18 +14,36 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordInput: UITextField!
     
-    @IBAction func login(_ sender: UIButton) {
-        let userName = userNameInput.text
-        let password = passwordInput.text
-        if loginSucceeded(userName: userName!, password: password!) {
-            self.performSegue(withIdentifier: "loginSegue", sender: self)
-        } else {
-            
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "loginSegue" {
+            let userName = userNameInput.text
+            let password = passwordInput.text
+            let succeed = loginSucceeded(userName: userName!, password: password!)
+            if !succeed {
+                let alert = UIAlertController(title: "Failed", message: "Invalid username or password", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                    // use action here
+                })
+                self.present(alert, animated: true)
+            }
+            return succeed
         }
+        return false
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        var viewController =  self.navigationController?.viewControllers
+//        var nagivationControllerTemp = self.navigationController
+//        var viewControllers = nagivationControllerTemp?.viewControllers
+//        viewControllers?.remove(at: 0)
+//        self.navigationController?.setViewControllers(viewControllers!, animated: true)
+        
+        // [navigationArray removeAllObjects];    // This is just for remove all view controller from navigation stack.
+//        [navigationArray removeObjectAtIndex: 2];  // You can pass your index here
+//        self.navigationController.viewControllers = navigationArray;
+//        [navigationArray release];
         // Do any additional setup after loading the view.
     }
 
