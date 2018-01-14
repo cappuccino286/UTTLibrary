@@ -10,17 +10,19 @@ import UIKit
 
 class Book{
     let title       : String
+    let author : String
     let description : String
     let category    : Int64
     let image       : String?
     // 1 if available and 0 if not
     var available   : Int64
-    init(title:String,description:String,category:Int64,image: String?) {
+    init(title:String,author:String,description:String,category:Int64,image: String?,available:Int64) {
         self.title=title
+        self.author=author
         self.description=description
         self.category=category
         self.image=image
-        self.available = 1
+        self.available = available
     }
     public func setAvailable(available : Bool) {
         if(available){

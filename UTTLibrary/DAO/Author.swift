@@ -28,7 +28,9 @@ class  Author {
     public func getId() -> Int64{
         return self.id
     }
-    
+    public func getNomAuthor() -> String{
+        return self.prenom + self.nom
+    }
     enum IdSettedError : Error {
         case IdSetted
     }

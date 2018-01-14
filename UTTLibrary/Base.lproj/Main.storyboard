@@ -247,13 +247,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ROx-nS-bnM">
-                                <rect key="frame" x="8" y="28" width="180" height="250"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="J5L-zQ-oXg"/>
-                                    <constraint firstAttribute="width" constant="180" id="LoQ-9y-9uG"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ua-aZ-1QF">
                                 <rect key="frame" x="8" y="330" width="361" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -345,8 +338,19 @@
                                     <action selector="borrowButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4WS-8f-80D"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ROx-nS-bnM">
+                                <rect key="frame" x="8" y="72" width="180" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="J5L-zQ-oXg"/>
+                                    <constraint firstAttribute="width" constant="180" id="LoQ-9y-9uG"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.96862745098039216" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ROx-nS-bnM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="MvK-k8-PYV"/>
+                            <constraint firstItem="ROx-nS-bnM" firstAttribute="top" secondItem="gk6-QX-uHz" secondAttribute="bottom" constant="8" id="QP9-yh-knZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detective Conan" id="rTV-M5-vQG">
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="mDn-Sm-bk9">
