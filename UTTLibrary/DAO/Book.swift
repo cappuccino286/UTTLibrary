@@ -14,6 +14,7 @@ class Book{
     let description : String
     let category    : Int64
     let image       : String?
+    var user        : String
     // 1 if available and 0 if not
     var available   : Int64
     init(title:String,author:String,description:String,category:Int64,image: String?,available:Int64) {
@@ -23,7 +24,19 @@ class Book{
         self.category=category
         self.image=image
         self.available = available
+        self.user = ""
     }
+    
+    init(title:String,author:String,description:String,category:Int64,image: String?,available:Int64, user : User) {
+        self.title      = title
+        self.author     = author
+        self.description = description
+        self.category   = category
+        self.image      = image
+        self.available  = available
+        self.user       = user.userName
+    }
+    
     public func setAvailable(available : Bool) {
         if(available){
             self.available = 1
@@ -34,6 +47,14 @@ class Book{
     
     public func getAvailable() -> Int64{
         return self.available
+    }
+    
+    public func isBorrowedByUser(user : User){
+        self.user = user.userName
+    }
+    
+    public func isRetoured(){
+        self.user = ""
     }
     
 }

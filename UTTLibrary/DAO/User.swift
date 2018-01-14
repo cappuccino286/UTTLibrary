@@ -16,4 +16,8 @@ class User {
         self.password = password
         self.noEtu    = noEtu
     }
+    public var description : String {
+        return userName
+    }
+    
 }

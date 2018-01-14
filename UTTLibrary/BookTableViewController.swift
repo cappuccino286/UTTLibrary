@@ -32,16 +32,7 @@ class BookTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (UserDefaults.standard.bool(forKey: "HasLaunchedOnce")) {
-            // App already launched
-        } else {
-            // This is the first launch ever
-            UserDefaults.standard.set(true, forKey: "HasLaunchedOnce")
-            UserDefaults.standard.synchronize()
-            model.createTable()
-            model.createTableUser()
-            model.insertSampleBooks()
-        }
+
         loadSampleBooks()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

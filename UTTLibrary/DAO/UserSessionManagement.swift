@@ -9,15 +9,22 @@
 import Foundation
 
 class UserSessionManagement {
-    static let USER_KEY = "currentUser"
+    static let USER_NAME = "currentUser"
+    static let PASSWORD = "password"
+    static let NOETU = "noetu"
     
     static func getUserSession() -> User{
         let preference = UserDefaults.standard
-        return preference.object(forKey: UserSessionManagement.USER_KEY) as! User
+        let userName = preference.string(forKey: UserSessionManagement.USER_NAME)
+        let password = preference.string(forKey: UserSessionManagement.PASSWORD)
+        let noEtu = preference.string(forKey: UserSessionManagement.NOETU)
+        return User(userName : userName!, password : password!, noEtu : noEtu!)
     }
-    static func saveUserSession(user : User){
+    static func saveUserSession(user : User?){
         let preference = UserDefaults.standard
-        preference.set(user, forKey: UserSessionManagement.USER_KEY)
+        preference.set(user?.userName, forKey: UserSessionManagement.USER_NAME)
+        preference.set(user?.password, forKey: UserSessionManagement.PASSWORD)
+        preference.set(user?.noEtu, forKey: UserSessionManagement.NOETU)
         preference.synchronize()
     }
     

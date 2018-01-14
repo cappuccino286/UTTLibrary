@@ -19,9 +19,10 @@ class BookConsultingViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCollectionViewCell", for: indexPath) as! BookItemCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookConsultingCell", for: indexPath) as! BookItemCollectionViewCell
         cell.bookImageView.image = UIImage(named : allBookList[indexPath.row].image!)
         cell.bookTitleField.text = allBookList[indexPath.row].title
+        cell.authorField.text    = allBookList[indexPath.row].author
         return cell
     }
     
@@ -46,7 +47,9 @@ class BookConsultingViewController: UIViewController, UICollectionViewDelegate, 
                 let description = book[model.description]
                 let category = book[model.category]
                 let image = book[model.image]
-                allBookList += [Book(title:title,description:description,category:category,image:image)]
+                let author = book[model.author]
+                let available = book[model.available]
+                allBookList += [Book(title:title, author : author, description:description, category:category,image:image, available: available)]
             }
         } catch{
             print(error)

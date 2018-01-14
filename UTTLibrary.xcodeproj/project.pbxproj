@@ -10,8 +10,8 @@
 		0824AD82200A822F00DDF6B2 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0824AD75200A822100DDF6B2 /* SQLite.framework */; };
 		0824AD83200A826600DDF6B2 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0824AD75200A822100DDF6B2 /* SQLite.framework */; };
 		0824AD84200A826600DDF6B2 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0824AD75200A822100DDF6B2 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		083FA389200B0A61006BE181 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083FA388200B0A61006BE181 /* LoginViewController.swift */; };
 		08797E3B200AC44100D3AD07 /* UserSessionManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08797E3A200AC44100D3AD07 /* UserSessionManagement.swift */; };
-		08797E40200ACD1800D3AD07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08797E3F200ACD1800D3AD07 /* LoginViewController.swift */; };
 		08797E42200AD57E00D3AD07 /* BookItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08797E41200AD57E00D3AD07 /* BookItemCollectionViewCell.swift */; };
 		08797E44200AD81A00D3AD07 /* BookConsultingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08797E43200AD81A00D3AD07 /* BookConsultingViewController.swift */; };
 		08C6883E200814650072C6C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C6883D200814650072C6C6 /* User.swift */; };
@@ -120,8 +120,8 @@
 
 /* Begin PBXFileReference section */
 		0824AD6A200A822000DDF6B2 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../Downloads/SQLite-2.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
+		083FA388200B0A61006BE181 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		08797E3A200AC44100D3AD07 /* UserSessionManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionManagement.swift; sourceTree = "<group>"; };
-		08797E3F200ACD1800D3AD07 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../../../.Trash/LoginViewController.swift; sourceTree = "<group>"; };
 		08797E41200AD57E00D3AD07 /* BookItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		08797E43200AD81A00D3AD07 /* BookConsultingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookConsultingViewController.swift; sourceTree = "<group>"; };
 		08C6883D200814650072C6C6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		0804222920090AFD00342EE8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				08797E3F200ACD1800D3AD07 /* LoginViewController.swift */,
+				083FA388200B0A61006BE181 /* LoginViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -486,7 +486,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08797E40200ACD1800D3AD07 /* LoginViewController.swift in Sources */,
 				B81CBC811FF365AD001702B6 /* BookTableViewController.swift in Sources */,
 				B8DF7DB72007D2A500408967 /* BookCollectionViewCell.swift in Sources */,
 				08797E42200AD57E00D3AD07 /* BookItemCollectionViewCell.swift in Sources */,
@@ -498,6 +497,7 @@
 				08797E44200AD81A00D3AD07 /* BookConsultingViewController.swift in Sources */,
 				08C6883E200814650072C6C6 /* User.swift in Sources */,
 				B877A5E920054B0900636726 /* LibraryPersistence.swift in Sources */,
+				083FA389200B0A61006BE181 /* LoginViewController.swift in Sources */,
 				B81CBC561FF2AD57001702B6 /* UTTLibrary.xcdatamodeld in Sources */,
 				B81CBC4E1FF2AD57001702B6 /* AppDelegate.swift in Sources */,
 			);
