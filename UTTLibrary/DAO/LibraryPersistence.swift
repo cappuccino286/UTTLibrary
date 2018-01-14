@@ -35,6 +35,7 @@ class LibraryPersistence{
     struct BookContract {
         static let TABLE_NAME   = "books"
         static let BOOK_ID      = "id"
+        static let BOOK_AUTHOR  = "author"
         static let BOOK_TITLE   = "title"
         static let BOOK_DESCRIPTION = "description"
         static let BOOK_CATEGORY = "category"
@@ -44,6 +45,7 @@ class LibraryPersistence{
 
     var booksTable  = Table(BookContract.TABLE_NAME)
     var id          = Expression<Int64>(BookContract.BOOK_ID)
+    var author          = Expression<String>(BookContract.BOOK_AUTHOR)
     var title       = Expression<String>(BookContract.BOOK_TITLE)
     var description = Expression<String>(BookContract.BOOK_DESCRIPTION)
     var category    = Expression<Int64>(BookContract.BOOK_CATEGORY)
@@ -55,7 +57,7 @@ class LibraryPersistence{
             try sharedInstance.database.run(booksTable.create(ifNotExists: true)    { t in
                 t.column(id, primaryKey: true)
                 t.column(title)
-//                t.column(author)
+                t.column(author)
                 t.column(description)
                 t.column(category)
                 t.column(image)
@@ -91,7 +93,7 @@ class LibraryPersistence{
     }
     
     // table Author
-    struct AuthorContract {
+    /*struct AuthorContract {
         static let TABLE_NAME       = "authors"
         static let AUTHOR_ID        = "id"
         static let AUTHOR_NOM       = "nom"
@@ -134,8 +136,7 @@ class LibraryPersistence{
         } catch{
             print(error)
         }
-    }
-    
+    }*/
     public func insertSampleBooks(){
         do{
             let conanBook = Book(title : "Détective Conan", description : "Shinichi Kudo est un jeune détective lycéen âgé de 17 ans fréquemment associé avec la police. Lors d'une visite dans un parc d'attractions en compagnie de son amie d'enfance, Ran Mouri, il surprend discrètement une conversation privée entre deux individus appartenant à une mystérieuse organisation criminelle dont chaque membre est habillé en noir. Repéré puis assommé, il est contraint d'avaler un nouveau poison (l'APTX 4869) mis au point par cette organisation, avant d'être laissé pour mort.", category : Int64(CATEGORY.COURT.rawValue), image :"conan")
@@ -172,17 +173,18 @@ class LibraryPersistence{
             print(error)
         }
     }
+    
     // return the inserted id
     func insertBook(book : Book) -> Int64{
         do {
-            let idInserted = try sharedInstance.database.run(booksTable.insert(title <- book.title, description <- book.description, category <- book.category, image <- book.image!, available <- book.getAvailable()))
+            let idInserted = try sharedInstance.database.run(booksTable.insert(title <- book.title, author <- book.author, description <- book.description, category <- book.category, image <- book.image!, available <- book.getAvailable()))
             return idInserted
         } catch  {
             print(error)
             return -1
         }
     }
-    
+    /*
     func insertAuthor(author : Author) -> Int64{
         do {
             return try sharedInstance.database.run(authorTable.insert(self.authorNom <- author.nom, self.authorPrenom <- author.prenom))
@@ -205,7 +207,7 @@ class LibraryPersistence{
         }catch {
             print(error)
         }
-    }
+    }*/
 
     func checkLogin(userName : String, password : String) -> Bool {
         do{

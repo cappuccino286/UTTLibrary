@@ -17,10 +17,12 @@ class BookTableViewController: UITableViewController {
             print(try model.database.scalar(model.booksTable.count))
             for book in try model.database.prepare(model.booksTable) {
                 let title = book[model.title]
+                let author = book[model.author]
                 let description = book[model.description]
                 let category = book[model.category]
                 let image = book[model.image]
-                books += [Book(title:title,description:description,category:category,image : image)]
+                let available = book[model.available]
+                books += [Book(title:title,author:author,description:description,category:category,image : image,available:available)]
             }
         } catch{
             print(error)
@@ -37,6 +39,7 @@ class BookTableViewController: UITableViewController {
             UserDefaults.standard.set(true, forKey: "HasLaunchedOnce")
             UserDefaults.standard.synchronize()
             model.createTable()
+            model.createTableUser()
             model.insertSampleBooks()
         }
         loadSampleBooks()
