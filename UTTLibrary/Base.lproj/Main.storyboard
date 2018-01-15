@@ -221,15 +221,14 @@
                                         <constraints>
                                             <constraint firstItem="0qO-py-SPj" firstAttribute="width" secondItem="6bA-rL-vqe" secondAttribute="width" id="03v-lm-nGW"/>
                                             <constraint firstItem="0qO-py-SPj" firstAttribute="height" secondItem="6bA-rL-vqe" secondAttribute="height" id="Sj8-I1-XJr"/>
-                                            <constraint firstAttribute="bottom" secondItem="sQA-Zl-6ha" secondAttribute="bottom" id="Wkc-BD-PKJ"/>
                                             <constraint firstItem="sQA-Zl-6ha" firstAttribute="height" secondItem="6bA-rL-vqe" secondAttribute="height" multiplier="0.25" id="Z9y-NR-GIN"/>
+                                            <constraint firstAttribute="bottom" secondItem="sQA-Zl-6ha" secondAttribute="bottom" id="xyZ-xI-VF5"/>
                                             <constraint firstItem="sQA-Zl-6ha" firstAttribute="width" secondItem="6bA-rL-vqe" secondAttribute="width" id="yfa-F1-LfE"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="AuthorField" destination="7zf-Qu-Iax" id="IQv-ZI-j8Y"/>
                                             <outlet property="BookImageView" destination="0qO-py-SPj" id="wIb-IH-0jw"/>
                                             <outlet property="BookTitleField" destination="y6I-Mk-8u2" id="Tnl-2O-pRD"/>
-                                            <outlet property="backgroundView" destination="L8u-nV-asw" id="UOH-uu-zaK"/>
                                             <outlet property="deleteButton" destination="f6y-uZ-7Oq" id="Qag-Y8-wu9"/>
                                             <segue destination="BYZ-38-t0r" kind="show" id="Bpk-Rf-o4z"/>
                                         </connections>
