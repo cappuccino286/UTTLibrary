@@ -229,6 +229,7 @@
                                             <outlet property="AuthorField" destination="7zf-Qu-Iax" id="IQv-ZI-j8Y"/>
                                             <outlet property="BookImageView" destination="0qO-py-SPj" id="wIb-IH-0jw"/>
                                             <outlet property="BookTitleField" destination="y6I-Mk-8u2" id="Tnl-2O-pRD"/>
+                                            <outlet property="backgroundView" destination="L8u-nV-asw" id="UOH-uu-zaK"/>
                                             <outlet property="deleteButton" destination="f6y-uZ-7Oq" id="Qag-Y8-wu9"/>
                                             <segue destination="BYZ-38-t0r" kind="show" id="Bpk-Rf-o4z"/>
                                         </connections>
