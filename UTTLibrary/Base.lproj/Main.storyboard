@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QyY-ip-Lu9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sEs-BW-qKr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -126,7 +126,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Hze-ui-ILy" kind="show" identifier="loginSegue" id="TpL-uI-bKs"/>
+                                    <segue destination="Dwm-su-t3W" kind="show" identifier="loginSegue" id="oU9-fn-Mee"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -154,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JKB-mB-UHm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-130" y="806"/>
+            <point key="canvasLocation" x="-1308" y="806"/>
         </scene>
         <!--Book Consulting View Controller-->
         <scene sceneID="KuB-Q1-Px5">
@@ -261,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9Q-m5-bTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="601" y="806"/>
+            <point key="canvasLocation" x="598" y="806"/>
         </scene>
         <!--BookDetailViewController-->
         <scene sceneID="tne-QT-ifu">
@@ -401,22 +401,22 @@
             <point key="canvasLocation" x="422" y="143"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="HSI-hI-vAH">
+        <scene sceneID="aYz-tB-dpi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nrn-64-lTY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QyY-ip-Lu9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dwm-su-t3W" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pyy-gw-kiN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vKr-Cv-SbI">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="sEs-BW-qKr" kind="relationship" relationship="rootViewController" id="ckd-GN-HZe"/>
+                        <segue destination="Hze-ui-ILy" kind="relationship" relationship="rootViewController" id="iaa-Z6-g30"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9XK-0d-my2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-943" y="806"/>
+            <point key="canvasLocation" x="-410" y="806"/>
         </scene>
     </scenes>
     <resources>
